@@ -36,9 +36,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/go-pdf/fpdf"
-	"github.com/go-pdf/fpdf/internal/example"
-	"github.com/go-pdf/fpdf/internal/files"
+	"codeberg.org/go-pdf/fpdf"
+	"codeberg.org/go-pdf/fpdf/internal/example"
+	"codeberg.org/go-pdf/fpdf/internal/files"
 )
 
 func loremList() []string {
@@ -1419,7 +1419,7 @@ func ExampleFpdf_CellFormat_align() {
 				pdf.CellFormat(170, 257, rec.txt, borderStr, 0, rec.align, false, 0, linkStr)
 				borderStr = ""
 			}
-			linkStr = "https://github.com/go-pdf/fpdf"
+			linkStr = "https://codeberg.org/go-pdf/fpdf"
 		}
 	}
 	pdf := fpdf.New("P", "mm", "A4", "") // A4 210.0 x 297.0
@@ -1627,7 +1627,7 @@ func ExampleFpdf_RegisterImageReader() {
 		wd       = 210
 		ht       = 297
 		fontSize = 15
-		urlStr   = "https://github.com/go-pdf/fpdf/raw/main/image/gofpdf.png"
+		urlStr   = "https://codeberg.org/go-pdf/fpdf/raw/main/image/gofpdf.png"
 		msgStr   = `Images from the web can be easily embedded when a PDF document is generated.`
 	)
 

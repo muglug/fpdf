@@ -1,9 +1,9 @@
 package tiff_test
 
 import (
-	"github.com/go-pdf/fpdf"
-	"github.com/go-pdf/fpdf/contrib/tiff"
-	"github.com/go-pdf/fpdf/internal/example"
+	"codeberg.org/go-pdf/fpdf"
+	"codeberg.org/go-pdf/fpdf/contrib/tiff"
+	"codeberg.org/go-pdf/fpdf/internal/example"
 )
 
 // ExampleRegisterFile demonstrates the loading and display of a TIFF image.

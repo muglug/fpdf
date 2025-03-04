@@ -47,13 +47,13 @@ encodings for languages that have fewer than 256 glyphs.
 To install the package on your system, run
 
 ```shell
-go get github.com/go-pdf/fpdf
+go get codeberg.org/go-pdf/fpdf
 ```
 
 Later, to receive updates, run
 
 ```shell
-go get -u -v github.com/go-pdf/fpdf/...
+go get -u -v codeberg.org/go-pdf/fpdf/...
 ```
 
 ## Quick Start
@@ -243,27 +243,27 @@ for file attachments and annotations.
 [badge-github]: https://img.shields.io/badge/project-Git_Hub-blue.svg
 [badge-mit]: https://img.shields.io/badge/license-MIT-blue.svg
 [badge-no-maintain]: http://unmaintained.tech/badge.svg
-[badge-report]: https://goreportcard.com/badge/github.com/go-pdf/fpdf
+[badge-report]: https://goreportcard.com/badge/codeberg.org/go-pdf/fpdf
 [badge-status]: https://travis-ci.org/go-pdf/fpdf.svg?branch=master
 [coverage]: https://blog.golang.org/cover
 [dfont]: http://dejavu-fonts.org/
 [draw2d-site]: https://github.com/llgcode/draw2d
 [effective-go]: https://golang.org/doc/effective_go.html 
 [fpdf-site]: http://www.fpdf.org/
-[fpdf-test]: https://github.com/go-pdf/fpdf/blob/master/fpdf_test.go
+[fpdf-test]: https://codeberg.org/go-pdf/fpdf/blob/master/fpdf_test.go
 [gfont]: https://fonts.google.com/
-[github]: https://github.com/go-pdf/fpdf
-[godoc]: https://godoc.org/github.com/go-pdf/fpdf
+[github]: https://codeberg.org/go-pdf/fpdf
+[godoc]: https://godoc.org/codeberg.org/go-pdf/fpdf
 [issue109]: https://github.com/phpdave11/gofpdf/issues/109
 [jung]: https://github.com/phpdave11/
-[last-commit]: https://github.com/go-pdf/fpdf/commit/603f56990463f011cb1dbb64ef7f872c1adc009a
+[last-commit]: https://codeberg.org/go-pdf/fpdf/commit/603f56990463f011cb1dbb64ef7f872c1adc009a
 [license]: https://raw.githubusercontent.com/go-pdf/fpdf/master/LICENSE
 [lint]: https://github.com/golang/lint
-[logo]: https://github.com/go-pdf/fpdf/raw/master/image/logo_gofpdf.jpg
+[logo]: https://codeberg.org/go-pdf/fpdf/raw/master/image/logo_gofpdf.jpg
 [noto]: https://github.com/jsntn/webfonts/blob/master/NotoSansSC-Regular.ttf
 [pr]: https://help.github.com/articles/using-pull-requests/
-[report]: https://goreportcard.com/report/github.com/go-pdf/fpdf
+[report]: https://goreportcard.com/report/codeberg.org/go-pdf/fpdf
 [status]: https://travis-ci.org/go-pdf/fpdf
-[test]: https://github.com/go-pdf/fpdf/blob/master/fpdf_test.go
+[test]: https://codeberg.org/go-pdf/fpdf/blob/master/fpdf_test.go
 [unmaintained]: http://unmaintained.tech/
 [vet]: https://golang.org/cmd/vet/

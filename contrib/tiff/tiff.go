@@ -26,7 +26,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/go-pdf/fpdf"
+	"codeberg.org/go-pdf/fpdf"
 	"golang.org/x/image/tiff"
 )
 

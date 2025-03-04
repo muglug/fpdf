@@ -24,8 +24,8 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/go-pdf/fpdf"
-	"github.com/go-pdf/fpdf/internal/example"
+	"codeberg.org/go-pdf/fpdf"
+	"codeberg.org/go-pdf/fpdf/internal/example"
 )
 
 func ExampleTtfParse() {

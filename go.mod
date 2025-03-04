@@ -1,13 +1,6 @@
-module github.com/go-pdf/fpdf
+module codeberg.org/go-pdf/fpdf
 
 go 1.21
-
-retract (
-	// v1.4.3 was tagged to retract v1.4.2
-	v1.4.3
-	// v1.4.2 was imported from phpdave11/gofpdf by mistake.
-	v1.4.2
-)
 
 require (
 	github.com/boombuler/barcode v1.0.1
