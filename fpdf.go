@@ -5102,6 +5102,7 @@ func (f *Fpdf) putcatalog() {
 
 func (f *Fpdf) putheader() {
 	f.outf("%%PDF-%s", f.pdfVersion)
+	f.out("%µ¶")
 }
 
 func (f *Fpdf) puttrailer() {
