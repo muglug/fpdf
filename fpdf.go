@@ -4596,6 +4596,9 @@ func (f *Fpdf) generateCIDFontMap(font *fontDefType, LastRune int) {
 	interval := false
 	startCid := 1
 	cwLen := LastRune + 1
+	if cwLen > len(font.Cw) {
+		cwLen = len(font.Cw)
+	}
 
 	// for each character
 	for cid := startCid; cid < cwLen; cid++ {

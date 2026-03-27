@@ -852,7 +852,7 @@ func (utf *utf8FontFile) parseHMTXTable(numberOfHMetrics, numSymbols int, symbol
 					if widths == 0 {
 						widths = 65535
 					}
-					if char < 196608 {
+					if char < len(utf.CharWidths) {
 						utf.CharWidths[char] = widths
 						charCount++
 					}
@@ -870,7 +870,7 @@ func (utf *utf8FontFile) parseHMTXTable(numberOfHMetrics, numSymbols int, symbol
 					if widths == 0 {
 						widths = 65535
 					}
-					if char < 196608 {
+					if char < len(utf.CharWidths) {
 						utf.CharWidths[char] = widths
 						charCount++
 					}

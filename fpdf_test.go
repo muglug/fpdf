@@ -30,6 +30,7 @@ import (
 
 	"codeberg.org/go-pdf/fpdf"
 	"codeberg.org/go-pdf/fpdf/internal/example"
+	"golang.org/x/image/font/gofont/goregular"
 )
 
 func init() {
@@ -305,6 +306,21 @@ func TestAFMFontParser(t *testing.T) {
 		t.Fatalf("could not create cmmi10 font: %v", err)
 	}
 
+}
+
+func TestNonBMPCharactersShouldNotPanic(t *testing.T) {
+	pdf := fpdf.New("P", "mm", "A4", "")
+	pdf.AddUTF8FontFromBytes("go", "", goregular.TTF)
+	pdf.SetFont("go", "", 12)
+	pdf.AddPage()
+	pdf.Cell(40, 10, "\U0001F7E5") // U+1F7E5 LARGE RED SQUARE
+	var buf bytes.Buffer
+	if err := pdf.Output(&buf); err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if pdf.Err() {
+		t.Fatalf("unexpected fpdf error: %v", pdf.Error())
+	}
 }
 
 func BenchmarkLineTo(b *testing.B) {
