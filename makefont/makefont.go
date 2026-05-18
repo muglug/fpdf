@@ -8,7 +8,7 @@ import (
 	"codeberg.org/go-pdf/fpdf"
 )
 
-func errPrintf(fmtStr string, args ...interface{}) {
+func errPrintf(fmtStr string, args ...any) {
 	fmt.Fprintf(os.Stderr, fmtStr, args...)
 }
 

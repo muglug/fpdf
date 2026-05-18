@@ -86,7 +86,7 @@ func TestPagedTemplate(t *testing.T) {
 	}
 
 	tplPages := tpl.FromPages()
-	for x := 0; x < len(tplPages); x++ {
+	for x := range tplPages {
 		pdf.AddPage()
 		pdf.UseTemplate(tplPages[x])
 	}

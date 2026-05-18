@@ -7,6 +7,7 @@ package fpdf
 import (
 	"math/rand"
 	"reflect"
+	"slices"
 	"sort"
 	"testing"
 )
@@ -46,9 +47,7 @@ func TestPDFVersionOrder(t *testing.T) {
 		t.Fatalf("shuffling failed")
 	}
 
-	sort.Slice(got, func(i, j int) bool {
-		return got[i] < got[j]
-	})
+	slices.Sort(got)
 
 	if !reflect.DeepEqual(got, want) {
 		t.Fatalf("PDF-version ordering is wrong:\ngot= %q\nwant=%q", got, want)
