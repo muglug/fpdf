@@ -6,8 +6,8 @@ import (
 	"sync"
 	"testing"
 
-	"codeberg.org/go-pdf/fpdf"
-	"codeberg.org/go-pdf/fpdf/internal/example"
+	"github.com/muglug/fpdf"
+	"github.com/muglug/fpdf/internal/example"
 )
 
 func ExampleNewImporter() {

@@ -12,7 +12,7 @@ import (
 	"testing"
 	"time"
 
-	"codeberg.org/go-pdf/fpdf"
+	"github.com/muglug/fpdf"
 )
 
 var floatEpsilon = math.Nextafter(1.0, 2.0) - 1.0

@@ -9,7 +9,7 @@ import (
 	"os"
 	"os/exec"
 
-	"codeberg.org/go-pdf/fpdf"
+	"github.com/muglug/fpdf"
 )
 
 func report(fileStr string, err error) {

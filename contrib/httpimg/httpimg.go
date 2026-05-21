@@ -4,7 +4,7 @@ import (
 	"io"
 	"net/http"
 
-	gofpdf "codeberg.org/go-pdf/fpdf"
+	gofpdf "github.com/muglug/fpdf"
 )
 
 // httpimgPdf is a partial interface that only implements the functions we need

@@ -61,11 +61,11 @@ page encodings for languages that have fewer than 256 glyphs.
 
 To install the package on your system, run
 
-	go get codeberg.org/go-pdf/fpdf
+	go get github.com/muglug/fpdf
 
 Later, to receive updates, run
 
-	go get -u -v codeberg.org/go-pdf/fpdf/...
+	go get -u -v github.com/muglug/fpdf/...
 
 # Quick Start
 
@@ -259,4 +259,4 @@ times, and for file attachments and annotations.
 
 -   Improve test coverage as reported by the coverage tool.
 */
-package fpdf // import "codeberg.org/go-pdf/fpdf"
+package fpdf // import "github.com/muglug/fpdf"

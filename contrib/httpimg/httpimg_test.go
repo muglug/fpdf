@@ -1,9 +1,9 @@
 package httpimg_test
 
 import (
-	"codeberg.org/go-pdf/fpdf"
-	"codeberg.org/go-pdf/fpdf/contrib/httpimg"
-	"codeberg.org/go-pdf/fpdf/internal/example"
+	"github.com/muglug/fpdf"
+	"github.com/muglug/fpdf/contrib/httpimg"
+	"github.com/muglug/fpdf/internal/example"
 )
 
 func ExampleRegister() {
@@ -12,7 +12,7 @@ func ExampleRegister() {
 	pdf.SetFillColor(200, 200, 220)
 	pdf.AddPage()
 
-	url := "https://codeberg.org/go-pdf/fpdf/raw/main/image/logo_gofpdf.jpg"
+	url := "https://github.com/muglug/fpdf/raw/main/image/logo_gofpdf.jpg"
 	httpimg.Register(pdf, url, "")
 	pdf.Image(url, 15, 15, 267, 0, false, "", 0, "")
 	fileStr := example.Filename("contrib_httpimg_Register")

@@ -19,7 +19,7 @@ package example_test
 import (
 	"errors"
 
-	"codeberg.org/go-pdf/fpdf/internal/example"
+	"github.com/muglug/fpdf/internal/example"
 )
 
 // ExampleFilename tests the Filename() and Summary() functions.

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"codeberg.org/go-pdf/fpdf"
+	"github.com/muglug/fpdf"
 )
 
 func errPrintf(fmtStr string, args ...any) {

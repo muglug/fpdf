@@ -24,7 +24,7 @@ import (
 	"strings"
 	"time"
 
-	"codeberg.org/go-pdf/fpdf"
+	"github.com/muglug/fpdf"
 )
 
 var gofpdfDir string

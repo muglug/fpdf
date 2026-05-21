@@ -1,4 +1,4 @@
-module codeberg.org/go-pdf/fpdf
+module github.com/muglug/fpdf
 
 go 1.25.0
 
