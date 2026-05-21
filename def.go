@@ -171,20 +171,21 @@ func (p PointType) XY() (float64, float64) {
 // Changes to this structure should be reflected in its GobEncode and GobDecode
 // methods.
 type ImageInfoType struct {
-	data  []byte  // Raw image data
-	smask []byte  // Soft Mask, an 8bit per-pixel transparency mask
-	n     int     // Image object number
-	w     float64 // Width
-	h     float64 // Height
-	cs    string  // Color space
-	pal   []byte  // Image color palette
-	bpc   int     // Bits Per Component
-	f     string  // Image filter
-	dp    string  // DecodeParms
-	trns  []int   // Transparency mask
-	scale float64 // Document scale factor
-	dpi   float64 // Dots-per-inch found from image file (png only)
-	i     string  // SHA-1 checksum of the above values.
+	data      []byte  // Raw image data
+	smask     []byte  // Soft Mask, an 8bit per-pixel transparency mask
+	smaskJpeg []byte  // JPEG-encoded soft mask (DCTDecode, no predictor)
+	n         int     // Image object number
+	w         float64 // Width
+	h         float64 // Height
+	cs        string  // Color space
+	pal       []byte  // Image color palette
+	bpc       int     // Bits Per Component
+	f         string  // Image filter
+	dp        string  // DecodeParms
+	trns      []int   // Transparency mask
+	scale     float64 // Document scale factor
+	dpi       float64 // Dots-per-inch found from image file (png only)
+	i         string  // SHA-1 checksum of the above values.
 }
 
 type idEncoder struct {
@@ -235,6 +236,7 @@ func generateImageID(info *ImageInfoType) (string, error) {
 	enc := newIDEncoder(sha)
 	enc.bytes(info.data)
 	enc.bytes(info.smask)
+	enc.bytes(info.smaskJpeg)
 	enc.i64(int64(info.n))
 	enc.f64(info.w)
 	enc.f64(info.h)

@@ -3568,6 +3568,42 @@ func (f *Fpdf) RegisterImageOptionsReader(imgName string, options ImageOptions, 
 	return
 }
 
+// RegisterSolidWithJpegMask registers a solid-color rectangle image with a
+// JPEG-encoded grayscale soft mask. The mask JPEG defines per-pixel opacity.
+// This produces smaller PDF files than PNG for blurred/gradient alpha content.
+func (f *Fpdf) RegisterSolidWithJpegMask(imgName string, w, h int, r, g, b uint8, maskJpeg []byte) {
+	if f.err != nil {
+		return
+	}
+	if _, ok := f.images[imgName]; ok {
+		return
+	}
+
+	pixels := make([]byte, w*h*3)
+	for i := 0; i < w*h; i++ {
+		pixels[i*3] = r
+		pixels[i*3+1] = g
+		pixels[i*3+2] = b
+	}
+	mem := xmem.compress(pixels)
+	compressed := mem.copy()
+	mem.release()
+
+	info := f.newImageInfo()
+	info.w = float64(w)
+	info.h = float64(h)
+	info.cs = "DeviceRGB"
+	info.bpc = 8
+	info.f = "FlateDecode"
+	info.data = compressed
+	info.smaskJpeg = maskJpeg
+
+	if info.i, f.err = generateImageID(info); f.err != nil {
+		return
+	}
+	f.images[imgName] = info
+}
+
 // RegisterImage registers an image, adding it to the PDF file but not adding
 // it to the page. Use Image() with the same filename to add the image to the
 // page. Note that Image() calls this function, so this function is only
@@ -4805,14 +4841,25 @@ func (f *Fpdf) putimage(info *ImageInfoType) {
 		}
 		f.outf("/Mask [%s]", trns.String())
 	}
-	if info.smask != nil {
+	if info.smask != nil || info.smaskJpeg != nil {
 		f.outf("/SMask %d 0 R", f.n+1)
 	}
 	f.outf("/Length %d>>", len(info.data))
 	f.putstream(info.data)
 	f.out("endobj")
 	// 	Soft mask
-	if len(info.smask) > 0 {
+	if len(info.smaskJpeg) > 0 {
+		smask := &ImageInfoType{
+			w:     info.w,
+			h:     info.h,
+			cs:    "DeviceGray",
+			bpc:   8,
+			f:     "DCTDecode",
+			data:  info.smaskJpeg,
+			scale: f.k,
+		}
+		f.putimage(smask)
+	} else if len(info.smask) > 0 {
 		smask := &ImageInfoType{
 			w:     info.w,
 			h:     info.h,
