@@ -1,12 +1,9 @@
 # GoFPDF document generator
 
-[![GitHub release](https://img.shields.io/github/release/go-pdf/fpdf.svg)](https://codeberg.org/go-pdf/fpdf/releases)
-[![CI](https://codeberg.org/go-pdf/fpdf/workflows/CI/badge.svg)](https://codeberg.org/go-pdf/fpdf/actions)
-[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/go-pdf/fpdf/master/LICENSE)
-[![Report](https://goreportcard.com/badge/codeberg.org/go-pdf/fpdf)](https://goreportcard.com/report/codeberg.org/go-pdf/fpdf)
-[![GoDoc](https://img.shields.io/badge/godoc-GoFPDF-blue.svg)](https://godoc.org/codeberg.org/go-pdf/fpdf)
+Fork of [codeberg.org/go-pdf/fpdf](https://codeberg.org/go-pdf/fpdf) with the following additions:
 
-![](https://codeberg.org/go-pdf/fpdf/raw/master/image/logo_gofpdf.jpg)
+- Fix panic on non-BMP Unicode characters ([upstream PR #113](https://codeberg.org/go-pdf/fpdf/pulls/113))
+- JPEG soft mask support (`RegisterSolidWithJpegMask`) for efficient blurred alpha rendering
 
 Package `go-pdf/fpdf` implements a PDF document generator with high level
 support for text, drawing and images.
