@@ -664,6 +664,7 @@ type Fpdf struct {
 	pageAttachments  [][]annotationAttach       // 1-based array of annotation for file attachments (per page)
 	outlines         []outlineType              // array of outlines
 	outlineRoot      int                        // root of outlines
+	pageLabels       map[int]string             // 1-based page number -> /PageLabels prefix
 	autoPageBreak    bool                       // automatic page breaking
 	acceptPageBreak  func() bool                // returns true to accept page break
 	pageBreakTrigger float64                    // threshold used to trigger page breaks

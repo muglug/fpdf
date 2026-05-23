@@ -2550,6 +2550,25 @@ func (f *Fpdf) Bookmark(txtStr string, level int, y float64) {
 	f.outlines = append(f.outlines, outlineType{text: txtStr, level: level, y: y, p: f.PageNo(), prev: -1, last: -1, next: -1, first: -1})
 }
 
+// SetPageLabel sets the page label (the identifier shown in a viewer's page
+// navigation/thumbnails) for the current page to labelStr. The label is emitted
+// as a prefix-only /PageLabels entry — that is, exactly labelStr with no
+// numbering style appended — so e.g. a spreadsheet converter can label each
+// page with its sheet name. Pages without a label fall back to the default
+// 1-based numbering.
+func (f *Fpdf) SetPageLabel(labelStr string) {
+	if f.page <= 0 {
+		return
+	}
+	if f.isCurrentUTF8 {
+		labelStr = utf8toutf16(labelStr)
+	}
+	if f.pageLabels == nil {
+		f.pageLabels = make(map[int]string)
+	}
+	f.pageLabels[f.page] = labelStr
+}
+
 // Text prints a character string. The origin (x, y) is on the left of the
 // first character at the baseline. This method permits a string to be placed
 // precisely on the page, but it is usually easier to use Cell(), MultiCell()
@@ -5133,6 +5152,21 @@ func (f *Fpdf) putcatalog() {
 	if len(f.outlines) > 0 {
 		f.outf("/Outlines %d 0 R", f.outlineRoot)
 		f.out("/PageMode /UseOutlines")
+	}
+	// Page labels: a number tree mapping 0-based page indices to prefix-only
+	// label dictionaries, so viewers display these strings instead of the
+	// default page numbers.
+	if len(f.pageLabels) > 0 {
+		pages := make([]int, 0, len(f.pageLabels))
+		for p := range f.pageLabels {
+			pages = append(pages, p)
+		}
+		sort.Ints(pages)
+		f.out("/PageLabels << /Nums [")
+		for _, p := range pages {
+			f.outf("%d << /P %s >>", p-1, f.textstring(f.pageLabels[p]))
+		}
+		f.out("] >>")
 	}
 	// Layers
 	f.layerPutCatalog()
